@@ -1,10 +1,11 @@
 use std::collections::HashMap;
 
-use crate::{misc::{id::Id, value::ValueType}, runtime::stack::{metric::StackMetric, stack::Stack}};
+use crate::{misc::{id::Id, value::ValueType}, runtime::stack::{metric::StackMetric, stack::{MemoryAction, Stack}}};
 
 pub struct StackManager {
     stacks: HashMap<Id, Stack>,
     metrics: StackMetric,
+    actions: HashMap<Id, MemoryAction>
 }
 
 impl StackManager {
@@ -12,7 +13,12 @@ impl StackManager {
         Self {
             stacks: HashMap::new(),
             metrics: StackMetric::new(),
+            actions: HashMap::new()
         }
+    }
+
+    pub fn commit_action(&mut self, id: &Id, action: MemoryAction) {
+        self.actions.insert(id.clone(), action);
     }
 
     pub fn create_stack(&mut self) -> Id {
