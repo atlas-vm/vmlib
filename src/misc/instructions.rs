@@ -4,18 +4,22 @@ pub enum Instruction {
     Push { constant_id: usize },
     Pop {},
     Copy { source: usize, destination: usize },
-    Load { local: usize },
-    Store { local: usize },
     Swap {},
 
     // Arithmetic / Logic (stack-based)
-    Add {}, Subtract {}, Multiply {}, Divide {},
-    And {}, Or {}, Xor {}, Not {},
+    Add {},
+    Subtract {},
+    Multiply {},
+    Divide {},
+    And {},
+    Or {},
+    Xor {},
+    Not {},
 
     // Control Flow
     Jump { target: u64 },
     JumpIf { target: u64 },
-    Call { function_id: u64 },
+    Call { fid: u64 },
     Return {},
 
     // Error Handling
@@ -24,8 +28,8 @@ pub enum Instruction {
     EndTry {},
 
     // Concurrency / Messaging
-    Send { pid: u64 },
+    Send { fid: u64 },
     Receive {},
-    Spawn { function_id: u64 },
+    Spawn { fid: u64 },
     CurrentFid {},
 }

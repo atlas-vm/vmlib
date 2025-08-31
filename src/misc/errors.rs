@@ -1,13 +1,11 @@
 #[repr(u8)]
-pub enum RuntimeError 
-{
+pub enum RuntimeError {
     StackOverflow(String),
     InvalidOperation(String),
 }
 
 #[repr(u8)]
-pub enum LoadError
-{
+pub enum LoadError {
     InvalidVersion(String),
     InvalidChecksum(String),
     InvalidPublisher(String),

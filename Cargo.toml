@@ -2,5 +2,7 @@
 name = "vmlib"
 version = "0.1.0"
 edition = "2024"
+authors = ["Kaguya <222018923+saki-kaguya@users.noreply.github.com>"]
 
 [dependencies]
+rand = "0.9.2"
