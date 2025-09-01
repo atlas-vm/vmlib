@@ -1,4 +1,5 @@
 #[repr(u8)]
+#[derive(Debug, Clone)]
 pub enum Instruction {
     // Stack / Memory
     Push { constant_id: usize },

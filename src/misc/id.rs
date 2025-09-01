@@ -1,4 +1,5 @@
 use rand::RngCore;
+use base58::{ToBase58};
 
 #[derive(Hash, PartialEq, Eq, Clone)]
 pub struct Id {
@@ -11,5 +12,17 @@ impl Id {
         rand::rng().fill_bytes(&mut buf);
 
         Self { id: buf }
+    }
+}
+
+impl std::fmt::Display for Id {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let encoded = self.id.to_base58();
+
+        if encoded.len() > 10 {
+            write!(f, "{}…{}", &encoded[..6], &encoded[encoded.len() - 4..])
+        } else {
+            write!(f, "{encoded}")
+        }
     }
 }

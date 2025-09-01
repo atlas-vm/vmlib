@@ -13,8 +13,8 @@ pub struct StackMetric {
 impl StackMetric {
     pub fn new() -> Self {
         Self {
-            stack_memory_allocated_maximum: 0,
-            stack_memory_allocated_minimum: usize::MAX,
+            stack_memory_allocated_maximum: isize::MAX as usize,
+            stack_memory_allocated_minimum: 0,
             stack_memory_allocated_average: 0,
             stack_memory_allocated_type: ValueType::Null,
             total_stacks: 0,
